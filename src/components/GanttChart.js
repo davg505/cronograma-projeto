@@ -6,6 +6,7 @@ const GanttChart = ({ tasks, onSaveTasks }) => {
     const [bars, setBars] = useState([]);
     const [dates, setDates] = useState([]);
     const [expandedRows, setExpandedRows] = useState({});
+    const [expandedRowsSub, setExpandedRowsSub] = useState({});
     const [showSubtaskForm, setShowSubtaskForm] = useState(false);
     const [selectedParentTask, setSelectedParentTask] = useState(null);
     const [chartTasks, setChartTasks] = useState([]);
@@ -143,6 +144,13 @@ const GanttChart = ({ tasks, onSaveTasks }) => {
         }));
     };
 
+    const toggleRowSub = (subIndex) => {
+        setExpandedRowsSub(prevState => ({
+            ...prevState,
+            [subIndex]: !prevState[subIndex]
+        }));
+    };
+
     const handleSubmit = (newSubtask) => {
         const updatedTasks = chartTasks.map(task => {
             if (task.parentTask === newSubtask.parentTask) {
@@ -233,17 +241,24 @@ const GanttChart = ({ tasks, onSaveTasks }) => {
                     <td>{subtask.actualEnd}</td>
                     <td>{subtask.responsible}</td>
                     <td>{subtask.cost}</td>
-                    <td>{subtask.observations}</td>
                     <td>
-                        <div className="gantt-chart-bar-container">
-                            {subtaskBars[subtask.id] && (
-                                <React.Fragment>
-                                    <div className="gantt-chart-bar planned" style={subtaskBars[subtask.id].planned} />
-                                    <div className="gantt-chart-bar actual" style={subtaskBars[subtask.id].actual} />
-                                </React.Fragment>
-                            )}
-                        </div>
-                    </td>
+                    <button onClick={() => toggleRowSub(subIndex)}>
+                        {expandedRowsSub[subIndex] ? "Esconder" : "Detalhes"}
+                    </button>
+                   </td>
+
+                   {expandedRowsSub[subIndex] && (
+                    <tr>
+                        <td colSpan="12">
+                            <div>
+                                <strong>Observação:</strong> {subtask.observations}
+                            </div>
+                            <div>
+                                <strong>Recursos:</strong> {subtask.resources}
+                            </div>
+                        </td>
+                    </tr>
+                )}
                 </tr>
 ))}
 
@@ -259,7 +274,7 @@ const GanttChart = ({ tasks, onSaveTasks }) => {
             {date}
         </div>
     ))}
-</div>
+                </div>
 <div className="gantt-chart-bars">
 {bars.map((bar, index) => (
     <div key={index} className="gantt-chart-bar-container">
@@ -269,21 +284,40 @@ const GanttChart = ({ tasks, onSaveTasks }) => {
         <div className="gantt-chart-bar actual" style={bar.actual}>
             <span className="bar-label">{bar.parentTask}</span> {/* Exibe o valor da parentTask */}
         </div>
-        {subtaskBars[bar.id] && subtaskBars[bar.id].map((subtaskBar, subIndex) => (
-            <React.Fragment key={`${index}-${subIndex}`}>
-                <div className="gantt-chart-bar planned" style={{ ...subtaskBar.planned, ...{ transform: `${subtaskBar.planned.transform}` } }}>
-                    <span className="bar-label">{subtaskBar.parentTask}</span> {/* Exibe o valor da parentTask */}
-                </div>
-                <div className="gantt-chart-bar actual" style={{ ...subtaskBar.actual, ...{ transform: `${subtaskBar.actual.transform}` } }}>
-                    <span className="bar-label">{subtaskBar.parentTask}</span> {/* Exibe o valor da parentTask */}
-                </div>
-            </React.Fragment>
-        ))}
+               
     </div>
 ))}
 
+
+<div className="gantt-chart-bars">
+  {Object.keys(subtaskBars).length > 0 &&
+    Object.entries(subtaskBars).map(([key, bar], index) => (
+      <div key={index} className="gantt-chart-bar-container">
+        <div className="gantt-chart-bar planned" style={bar}>
+          <span className="bar-label">{bar.parentTask}</span>
+        </div>
+        <div className="gantt-chart-bar actual" style={bar.actual}>
+          <span className="bar-label">{bar.parentTask}</span>
+        </div>
+      </div>
+    ))}
 </div>
+
+
+
+        </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     );
