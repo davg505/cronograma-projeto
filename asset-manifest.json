@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cronograma-projeto/static/css/main.1a73fd53.css",
+    "main.js": "/cronograma-projeto/static/js/main.996c1a7f.js",
+    "static/js/453.447efd25.chunk.js": "/cronograma-projeto/static/js/453.447efd25.chunk.js",
+    "index.html": "/cronograma-projeto/index.html",
+    "main.1a73fd53.css.map": "/cronograma-projeto/static/css/main.1a73fd53.css.map",
+    "main.996c1a7f.js.map": "/cronograma-projeto/static/js/main.996c1a7f.js.map",
+    "453.447efd25.chunk.js.map": "/cronograma-projeto/static/js/453.447efd25.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a73fd53.css",
+    "static/js/main.996c1a7f.js"
+  ]
+}
