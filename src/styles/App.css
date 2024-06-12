@@ -1,0 +1,79 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh; /* Para garantir que a altura ocupe toda a janela */
+  overflow: auto;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+input, textarea, button {
+  padding: 1px;
+  font-size: 12px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem; /* Ajuste o padding conforme necessário */
+  font-size: 0.8rem; /* Ajuste o tamanho da fonte conforme necessário */
+  border-radius: 10px; /* Adicione bordas arredondadas se desejado */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #e9ecef;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+#gantt-chart {
+  height: 600px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+
+
+

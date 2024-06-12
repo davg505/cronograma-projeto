@@ -1,0 +1,105 @@
+.gantt-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.gantt-chart-content {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.gantt-chart-table {
+    flex: 1;
+    margin-right: 80px; /* Espaço entre a tabela e a régua de datas */
+}
+
+.gantt-chart-bars-container {
+    flex: 3;
+    position: relative;
+    border: 1px solid #ddd;
+    overflow-x: auto; /* Adiciona barra de rolagem horizontal */
+    white-space: nowrap;
+}
+
+.gantt-chart-dates {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0;
+    background-color: #f9f9f9;
+    position: sticky;
+    top: 0;
+}
+
+.gantt-chart-date {
+    min-width: 40px; /* Largura de cada célula da régua de datas */
+    margin-right: 5px; /* Espaçamento entre as datas */
+    text-align: center;
+    font-size: 12px;
+}
+
+.gantt-chart-bars {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px; /* Ajuste conforme necessário para alinhar as barras com as datas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 4px; /* Altera o espaçamento interno das células */
+    font-size: 13px; /* Altera o tamanho da fonte */
+    height: 30px; /* Altera a altura das células */
+    white-space: nowrap;
+}
+
+table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.gantt-chart-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px; /* Altura da barra */
+}
+
+.gantt-chart-bar {
+    height: 100%;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+}
+
+.gantt-chart-bar.planned {
+    background-color: rgba(150, 0, 0, 0.5);
+}
+
+.gantt-chart-bar.actual {
+    background-color: rgba(0, 150, 0, 0.5);
+}
+
+/* Media Queries para tornar o layout responsivo */
+@media (max-width: 768px) {
+    .gantt-chart-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gantt-chart-table {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .gantt-chart-bars-container {
+        width: 100%;
+    }
+}

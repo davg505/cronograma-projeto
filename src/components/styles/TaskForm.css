@@ -1,0 +1,12 @@
+.form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .label {
+    font-size: 0.8rem; /* Aumenta o tamanho da letra */
+    color: #333; /* Define a cor da letra */
+    white-space: nowrap;
+  }
+  
+
+  
